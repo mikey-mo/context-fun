@@ -8,6 +8,8 @@ const spanish = {
   bookThree: 'El Imperio Final',
   themButtonOne: 'Tema de Alternar Dark',
   themeButtonTwo: 'Tema de Alternar Light',
+  english: 'Inglés',
+  spanish: 'Español',
 };
 
 export default spanish;

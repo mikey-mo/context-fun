@@ -8,6 +8,8 @@ const english = {
   bookThree: 'The Final Empire',
   themButtonOne: 'Toggle Theme Dark',
   themeButtonTwo: 'Toggle Theme Light',
+  english: 'English',
+  spanish: 'Spanish',
 };
 
 export default english;

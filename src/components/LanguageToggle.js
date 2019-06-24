@@ -1,5 +1,7 @@
-import React, { Component } from 'react'
+import React, { useContext } from 'react'
 import { ThemeContext } from '../contexts/theme-context';
+import { LanguageContext } from '../contexts/language-context';
+import Languages from '../constants/languages';
 import Themes from '../constants/themes';
 
 const style = {
@@ -13,47 +15,49 @@ const style = {
   buttons: {
     border: 0,
     margin: '10px',
-    padding: '4px',
-    paddingLeft: '6px',
-    paddingRight: '6px',
+    padding: '8px',
+    paddingLeft: '20px',
+    paddingRight: '20px',
   },
 }
 
-export default class ThemeToggle extends Component {
-  static contextType = ThemeContext;
+const LanguageToggle = () => {
+  const { theme } = useContext(ThemeContext)
+  const { language, toggleLanguage } = useContext(LanguageContext);
+  const styleTheme = Themes[theme];
+  const appLang = Languages[language];
+  const { ui, syntax, bg } = styleTheme;
+  const { english, spanish } = appLang;
 
-  render() {
-    const { theme, toggleLanguage } = this.context;
-    const styleTheme = Themes[theme];
-
-    return (
-      <div
+  return (
+    <div
+      style={{
+        ...style.container,
+        background: bg,
+      }}
+    >
+      <button
         style={{
-          ...style.container,
-          background: styleTheme.bg,
+          ...style.buttons,
+          background: ui,
+          color: syntax,
         }}
+        onClick={() => toggleLanguage('english')}
       >
-        <button
-          style={{
-            ...style.buttons,
-            background: styleTheme.ui,
-            color: styleTheme.syntax,
-          }}
-          onClick={() => toggleLanguage('english')}
-        >
-          {'English'}
-        </button>
-        <button
-          style={{
-            ...style.buttons,
-            background: styleTheme.ui,
-            color: styleTheme.syntax,
-          }}
-          onClick={() => toggleLanguage('spanish')}
-        >
-          {'Spanish'}
-        </button>
-      </div>
-    )
-  }
+        {english}
+      </button>
+      <button
+        style={{
+          ...style.buttons,
+          background: ui,
+          color: syntax,
+        }}
+        onClick={() => toggleLanguage('spanish')}
+      >
+        {spanish}
+      </button>
+    </div>
+  )
 }
+
+export default LanguageToggle;

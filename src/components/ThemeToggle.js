@@ -1,5 +1,5 @@
 
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { ThemeContext } from '../contexts/theme-context';
 import Themes from '../constants/themes';
 
@@ -14,9 +14,9 @@ const style = {
   buttons: {
     border: 0,
     margin: '10px',
-    padding: '4px',
-    paddingLeft: '6px',
-    paddingRight: '6px',
+    padding: '8px',
+    paddingLeft: '20px',
+    paddingRight: '20px',
   },
 };
 

@@ -6,15 +6,21 @@ import ThemeToggle from './components/ThemeToggle';
 import LanguageToggle from './components/LanguageToggle';
 
 import ThemeContextProvider from './contexts/theme-context';
+import AuthContextProvider from './contexts/auth-context';
+import LanguageContextProvider from './contexts/language-context';
 
 function App() {
   return (
     <div className="App">
       <ThemeContextProvider>
-        <Navbar />
-        <BookList />
-        <ThemeToggle />
-        <LanguageToggle />
+        <AuthContextProvider>
+          <LanguageContextProvider>
+            <Navbar />
+            <BookList />
+            <ThemeToggle />
+            <LanguageToggle />
+          </LanguageContextProvider>
+        </AuthContextProvider>
       </ThemeContextProvider>
     </div>
   );
