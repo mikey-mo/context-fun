@@ -10,6 +10,8 @@ const english = {
   themeButtonTwo: 'Toggle Theme Light',
   english: 'English',
   spanish: 'Spanish',
+  lightTheme: 'Light Theme',
+  darkTheme: 'Dark Theme',
 };
 
 export default english;

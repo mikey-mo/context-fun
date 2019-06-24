@@ -18,6 +18,7 @@ const style = {
     padding: '8px',
     paddingLeft: '20px',
     paddingRight: '20px',
+    width: '100px',
   },
 }
 

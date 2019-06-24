@@ -1,7 +1,9 @@
 
-import React, { Component } from 'react'
+import React, { useContext } from 'react'
 import { ThemeContext } from '../contexts/theme-context';
+import { LanguageContext } from '../contexts/language-context';
 import Themes from '../constants/themes';
+import Languages from '../constants/languages';
 
 const style = {
   container: {
@@ -20,41 +22,43 @@ const style = {
   },
 };
 
-export default class ThemeToggle extends Component {
-  static contextType = ThemeContext;
+const ThemeToggle = () => {
+  const { theme, toggleTheme } = useContext(ThemeContext);
+  const { language } = useContext(LanguageContext);
+  const appLang = Languages[language];
+  const styleTheme = Themes[theme];
+  const { darkTheme, lightTheme } = appLang;
+  const { bg, ui, syntax } = styleTheme;
 
-  render() {
-    const { theme, toggleTheme } = this.context;
-    const styleTheme = Themes[theme];
-
-    return (
-      <div
+  return (
+    <div
+      style={{
+        ...style.container,
+        background: bg,
+      }}
+    >
+      <button
         style={{
-          ...style.container,
-          background: styleTheme.bg,
+          ...style.buttons,
+          background: ui,
+          color: syntax,
         }}
+        onClick={() => toggleTheme('dark')}
       >
-        <button
-          style={{
-            ...style.buttons,
-            background: styleTheme.ui,
-            color: styleTheme.syntax,
-          }}
-          onClick={() => toggleTheme('dark')}
-        >
-          Theme Dark
-        </button>
-        <button
-          style={{
-            ...style.buttons,
-            background: styleTheme.ui,
-            color: styleTheme.syntax,
-          }}
-          onClick={() => toggleTheme('light')}
-        >
-          Theme Light
-        </button>
-      </div>
-    )
-  }
+        {darkTheme}
+      </button>
+      <button
+        style={{
+          ...style.buttons,
+          background: ui,
+          color: syntax,
+        }}
+        onClick={() => toggleTheme('light')}
+      >
+        {lightTheme}
+      </button>
+    </div>
+  )
 }
+
+export default ThemeToggle;

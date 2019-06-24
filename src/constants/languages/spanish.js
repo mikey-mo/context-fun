@@ -10,6 +10,8 @@ const spanish = {
   themeButtonTwo: 'Tema de Alternar Light',
   english: 'Inglés',
   spanish: 'Español',
+  lightTheme: 'Luz del Tema',
+  darkTheme: 'Tema Oscuro',
 };
 
 export default spanish;
